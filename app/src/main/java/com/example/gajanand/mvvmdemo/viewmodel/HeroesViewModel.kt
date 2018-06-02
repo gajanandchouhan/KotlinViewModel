@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.widget.Toast
 import com.example.gajanand.mvvmdemo.MvvmDemo
+import com.example.gajanand.mvvmdemo.db.AppDataBase
 import com.example.gajanand.mvvmdemo.model.Hero
 import com.example.gajanand.mvvmdemo.network.ApiClient
 import retrofit2.Call
@@ -26,8 +27,14 @@ class HeroesViewModel : ViewModel() {
                 override fun onResponse(call: Call<List<Hero>>?, response: Response<List<Hero>>?) {
 
                     if (response != null) {
-                        heroList!!.value=response.body()
-                        Toast.makeText(MvvmDemo.getInstance(), "Success", Toast.LENGTH_LONG).show();
+                        if (response.body() != null) {
+                            Toast.makeText(MvvmDemo.getInstance(), "Success", Toast.LENGTH_LONG).show();
+                            val heroDao = AppDataBase.getAppDatabase(MvvmDemo.getInstance()!!)!!.heroDao()
+                            heroDao.insertAll(response.body()!!)
+                            heroList!!.value = response.body()
+                        }
+
+
                     }
                 }
 

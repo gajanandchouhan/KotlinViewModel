@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.gajanand.mvvmdemo.R
+import com.example.gajanand.mvvmdemo.db.AppDataBase
 import com.example.gajanand.mvvmdemo.model.Hero
 import com.example.gajanand.mvvmdemo.viewmodel.HeroesViewModel
 
@@ -17,8 +18,9 @@ class MainActivity : AppCompatActivity() {
         heroesViewModel.getHeros().observe(this, object : Observer<List<Hero>> {
             override fun onChanged(heroList: List<Hero>?) {
                 if (heroList != null) {
-                    for (hero in heroList) {
-                        System.out.println(hero.name + ", " + hero.imageurl)
+                    val allHeros = AppDataBase.getAppDatabase(this@MainActivity)!!.heroDao().getAllHeros()
+                    for (allHeros in allHeros) {
+                        System.out.println(allHeros.name + ", " + allHeros.imageurl);
                     }
                 }
             }
