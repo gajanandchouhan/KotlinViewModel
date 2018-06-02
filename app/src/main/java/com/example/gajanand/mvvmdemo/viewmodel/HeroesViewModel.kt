@@ -33,6 +33,6 @@ class HeroesViewModel : ViewModel() {
 
             })
         }
-        return heroList as MutableLiveData<List<Hero>>;
+        return heroList as MutableLiveData<List<Hero>>
     }
 }
