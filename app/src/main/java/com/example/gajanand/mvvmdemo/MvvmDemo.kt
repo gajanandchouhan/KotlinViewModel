@@ -4,8 +4,8 @@ import android.app.Application
 
 class MvvmDemo : Application() {
     companion object {
-        var application: Application? = null
-        fun getInstance(): Application? {
+        var application: MvvmDemo? = null
+        fun getInstance(): MvvmDemo? {
             return application
         }
     }
