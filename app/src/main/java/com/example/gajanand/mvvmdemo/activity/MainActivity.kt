@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.gajanand.mvvmdemo.GlideApp
 import com.example.gajanand.mvvmdemo.R
 import com.example.gajanand.mvvmdemo.model.Hero
 import com.example.gajanand.mvvmdemo.viewmodel.HeroesViewModel
