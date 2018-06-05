@@ -1,6 +1,8 @@
 package com.example.gajanand.mvvmdemo
 
 import android.app.Application
+import android.arch.lifecycle.ProcessLifecycleOwner
+import com.example.gajanand.mvvmdemo.utils.AppObserver
 
 class MvvmDemo : Application() {
     companion object {
@@ -13,6 +15,7 @@ class MvvmDemo : Application() {
     override fun onCreate() {
         super.onCreate()
         application = this
+        ProcessLifecycleOwner.get().lifecycle.addObserver(AppObserver())
     }
 
 
